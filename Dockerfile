@@ -13,6 +13,9 @@ RUN chown -R appuser:appuser /var/www/html
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# Copy custom PHP configuration
+COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
 # optional php-fpm tuning
 RUN echo "pm.max_children=10" > /usr/local/etc/php-fpm.d/zz-custom.conf
 
